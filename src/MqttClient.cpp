@@ -197,11 +197,16 @@ void MqttClient::loadParameters() {
     }
   }
 
-  // resolve filepaths
-  broker_config_.tls.ca_certificate = resolvePath(broker_tls_ca_certificate);
-  client_config_.buffer.directory = resolvePath(client_buffer_directory);
-  client_config_.tls.certificate = resolvePath(client_tls_certificate);
-  client_config_.tls.key = resolvePath(client_tls_key);
+  // std::cout<< broker_tls_ca_certificate <<std::endl;
+  // std::cout<< client_buffer_directory <<std::endl;
+  // std::cout<< client_tls_certificate <<std::endl;
+  // std::cout<< client_tls_key <<std::endl;
+
+  // // resolve filepaths
+  // broker_config_.tls.ca_certificate = resolvePath(broker_tls_ca_certificate);
+  // client_config_.buffer.directory = resolvePath(client_buffer_directory);
+  // client_config_.tls.certificate = resolvePath(client_tls_certificate);
+  // client_config_.tls.key = resolvePath(client_tls_key);
 
   // load bridge parameters from parameter server
   XmlRpc::XmlRpcValue bridge;
@@ -360,18 +365,20 @@ std::filesystem::path MqttClient::resolvePath(const std::string& path_string) {
 
   std::filesystem::path path(path_string);
   if (path_string.empty()) return path;
-  if (!path.has_root_path()) {
-    std::string ros_home;
-    ros::get_environment_variable(ros_home, "ROS_HOME");
-    if (ros_home.empty())
-      ros_home = std::string(std::filesystem::current_path());
-    path = std::filesystem::path(ros_home);
-    path.append(path_string);
-  }
-  if (!std::filesystem::exists(path))
-    NODELET_WARN("Requested path '%s' does not exist",
-                 std::string(path).c_str());
-  return path;
+
+  
+  // if (!path.has_root_path()) {
+  //   std::string ros_home;
+  //   ros::get_environment_variable(ros_home, "ROS_HOME");
+  //   if (ros_home.empty())
+  //     ros_home = std::string(std::filesystem::current_path());
+  //   path = std::filesystem::path(ros_home);
+  //   path.append(path_string);
+  // }
+  // if (!std::filesystem::exists(path))
+  //   NODELET_WARN("Requested path '%s' does not exist",
+  //                std::string(path).c_str());
+  // return path;
 }
 
 

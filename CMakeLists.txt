@@ -137,8 +137,7 @@ add_library(${PROJECT_NAME}
 
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
-## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/hx_testmanager_node.cpp)
+## The recommended prefix ensures that target names across packages don't collideadd_executable(${PROJECT_NAME}_node src/hx_testmanager_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -155,6 +154,16 @@ target_link_libraries(${PROJECT_NAME}
   ${catkin_LIBRARIES}
   ${PahoMqttCpp_LIBRARIES}
 )
+
+add_executable(test_node src/main.cpp)
+
+add_dependencies(test_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
+target_link_libraries(test_node
+  ${catkin_LIBRARIES}
+  ${PahoMqttCpp_LIBRARIES}
+)
+
 
 #############
 ## Install ##
