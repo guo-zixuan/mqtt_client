@@ -1,16 +1,129 @@
 broker:
-  host: localhost
+  host: 192.168.50.66
   port: 1883
 bridge:
   ros2mqtt:
-    - ros_topic: /ping/ros
-      mqtt_topic: pingpong/ros
-    - ros_topic: /ping/primitive
-      mqtt_topic: pingpong/primitive
-      primitive: true
+    - ros_topic: /mavros/local_position/odom
+      mqtt_topic: /mqtt/mavros/local_position/odom
+
+    - ros_topic: /mavros/battery
+      mqtt_topic: /mqtt/mavros/battery
+
+    - ros_topic: /mavros/esc_status 
+      mqtt_topic: /mqtt/mavros/esc_status 
+
+    # - ros_topic: /Odometry
+    #   mqtt_topic: /mqtt/Odometry
+
+    # - ros_topic: /cost_map
+    #   mqtt_topic: /mqtt/cost_map
+
+    # - ros_topic: /edt_map
+    #   mqtt_topic: /mqtt/edt_map
+
+    # - ros_topic: /forbid_reg_cloud
+    #   mqtt_topic: /mqtt/forbid_reg_cloud
+
+    # - ros_topic: /glb_ogm_map
+    #   mqtt_topic: /mqtt/glb_ogm_map
+
+    - ros_topic: /pred_traj
+      mqtt_topic: /mqtt/pred_traj
+
+    - ros_topic: /path
+      mqtt_topic: /mqtt/path
+
+    - ros_topic: /Laser_map
+      mqtt_topic: /mqtt/Laser_map
+    
+    # - ros_topic: /imu_detection/crash_point
+    #   mqtt_topic: /mqtt/imu_detection/crash_point
+
+    # - ros_topic: /imu_ekf/odom
+    #   mqtt_topic: /mqtt/imu_ekf/odom
+
+    # - ros_topic: /mavros/altitude
+    #   mqtt_topic: /mqtt/mavros/altitude
+
+    # - ros_topic: /mavros/estimator_status
+    #   mqtt_topic: /mqtt/mavros/estimator_status
+
+    # - ros_topic: /mavros/extended_state
+    #   mqtt_topic: /mqtt/mavros/extended_state
+
+    # - ros_topic: /mavros/geofence/waypoints
+    #   mqtt_topic: /mqtt/mavros/geofence/waypoints
+
+    # - ros_topic: /mavros/imu/data
+    #   mqtt_topic: /mqtt/mavros/imu/data
+
+    - ros_topic: /mavros/imu/data_raw
+      mqtt_topic: /mqtt/mavros/imu/data_raw
+
+    # - ros_topic: /mavros/imu/static_pressure
+    #   mqtt_topic: /mqtt/mavros/imu/static_pressure
+
+    # - ros_topic: /mavros/imu/temperature_imu
+    #   mqtt_topic: /mqtt/mavros/imu/temperature_imu
+
+    # - ros_topic: /mavros/local_position/pose
+    #   mqtt_topic: /mqtt/mavros/local_position/pose
+
+    # - ros_topic: /mavros/local_position/velocity_body
+    #   mqtt_topic: /mqtt/mavros/local_position/velocity_body
+
+    - ros_topic: /mavros/local_position/velocity_local
+      mqtt_topic: /mqtt/mavros/local_position/velocity_local
+
+    # - ros_topic: /mavros/mission/waypoints
+    #   mqtt_topic: /mqtt/mavros/mission/waypoints
+
+    # - ros_topic: /mavros/odometry/in
+    #   mqtt_topic: /mqtt/mavros/odometry/in
+
+    # - ros_topic: /mavros/param/param_value
+    #   mqtt_topic: /mqtt/mavros/param/param_value
+
+    # - ros_topic: /mavros/rallypoint/waypoints
+    #   mqtt_topic: /mqtt/mavros/rallypoint/waypoints
+
+    # - ros_topic: /mavros/rc/out
+    #   mqtt_topic: /mqtt/mavros/rc/out
+
+    # - ros_topic: /mavros/setpoint_raw/target_attitude
+    #   mqtt_topic: /mqtt/mavros/setpoint_raw/target_attitude
+
+    # - ros_topic: /mavros/state
+    #   mqtt_topic: /mqtt/mavros/state
+
+    # - ros_topic: /mavros/target_actuator_control
+    #   mqtt_topic: /mqtt/mavros/target_actuator_control
+
+    # - ros_topic: /mavros/time_reference
+    #   mqtt_topic: /mqtt/mavros/time_reference
+
+    # - ros_topic: /mavros/timesync_status
+    #   mqtt_topic: /mqtt/mavros/timesync_status
+
+    # - ros_topic: /mavros/vfr_hud
+    #   mqtt_topic: /mqtt/mavros/vfr_hud
+
+    # - ros_topic: /mavros/vision_pose/pose
+    #   mqtt_topic: /mqtt/mavros/vision_pose/pose
+
+    # - ros_topic: /mid_360/points
+    #   mqtt_topic: /mqtt/mid_360/points
+
+    # - ros_topic: /tf
+    #   mqtt_topic: /mqtt/tf
+
+    # - ros_topic: /tf_static
+    #   mqtt_topic: /mqtt/tf_static
+
+    # - ros_topic: /usr_imu
+    #   mqtt_topic: /mqtt/usr_imu
   mqtt2ros:
-    - mqtt_topic: pingpong/ros
-      ros_topic: /pong/ros
-    - mqtt_topic: pingpong/primitive
-      ros_topic: /pong/primitive
-      primitive: true
+    - mqtt_topic: /mqtt/pingpong
+      ros_topic: /pingpong
+
+
